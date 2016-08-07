@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Comment</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/comment_styles.css">
+</head>
+<body>
+	<h2>Comments Example</h2>
+	<div ng-contruller="photoController">
+		<div id="photosContainer">
+			<div class="listPhoto" ng-repeat="photo in photos">
+				<img ng-src="/images/{{photo.filename}}" class="listPhoto" ng-click="setPhoto(photo._id)">
+			</div>
+		</div>
+		<div>
+			<div id="photoContainer">
+				<p class="imageTitle">{{photo.title}}</p>
+				<img ng-src="/images/{{photo.filename}}" class="mainPhoto">
+			</div>
+			<div id="photoComments" ng-init="addComment=false;rePlaySubject='';replyBody=''">
+				<div class="comment" ng-include="'/static/comment_thread.html'"></div>
+			</div>
+		</div>
+	</div>
+	<div ng-controller="pageController">
+		<div id="pageComments" ng-init="addComent=false;replySubject='';replyBody=''">
+			<div class="comment" ng-include="'/static/comment_thread.html'"></div>
+		</div>
+	</div>
+<script type="text/javascript" src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+<script type="text/javascript" src="/static/js/comment_app.js"></script>
+</body>
+</html>
